@@ -1,13 +1,16 @@
-library(shiny)
-
 ui <- fluidPage(
-  titlePanel("Olympic Medals"),
+  titlePanel("Explore Olympic Medal Data"),
+
   sidebarLayout(
     sidebarPanel(
-      selectInput("country", "Choose a country:", choices = c("USA", "China", "Japan"))
+      selectInput("country", "Choose a country:",
+                  choices = unique(OlympicsMedal$Country)),  # Dropdown menu
+      helpText("Select a country to view its Olympic medal data.")
     ),
+
     mainPanel(
-      textOutput("medals")
+      textOutput("summaryText"),
+      plotOutput("medalPlot")
     )
   )
 )
