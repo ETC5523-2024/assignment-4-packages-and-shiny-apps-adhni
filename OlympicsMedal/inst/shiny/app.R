@@ -20,9 +20,9 @@ world <- ne_countries(scale = "medium", returnclass = "sf") %>%
   select(iso_a3, geometry) %>%
   left_join(OlympicsMedal, by = "iso_a3")
 
-# Define color palette based on the number of total medals
+# Define color palette based on the number of total medals (reversed)
 color_palette <- colorNumeric(
-  palette = c("#FFD700", "#C0C0C0", "#cd7f32"),
+  palette = c("#cd7f32", "#C0C0C0", "#FFD700"),  # Bronze, Silver, Gold
   domain = world$Total,
   na.color = "grey"
 )
@@ -31,18 +31,18 @@ color_palette <- colorNumeric(
 ui <- fluidPage(
   tags$style(HTML("
     body {
-      background-color: #a499c3; /* Solid background color */
+      background-color: navy; /* Change to navy blue */
       font-family: 'Roboto', sans-serif; /* Updated font */
     }
     .title {
       text-align: center;
-      color: #002e54; /* Darker color for better contrast */
+      color: #ffffff; /* Change text color for better contrast */
       margin: 20px 0;
       font-size: 48px; /* Larger font size */
       font-weight: 700; /* Bold font */
       letter-spacing: 1px; /* Spacing between letters */
       padding: 10px 20px; /* Padding around text */
-      background-color: rgba(255, 255, 255, 0.8); /* Light background */
+      background-color: navy; /* Navy background for title */
       border-radius: 8px; /* Rounded corners */
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
     }
@@ -54,7 +54,7 @@ ui <- fluidPage(
     }
     .medal-info {
       padding: 15px;
-      background: rgba(255, 255, 255, 0.9); /* Light background for medal info */
+      background: white; /* White background for medal info */
       border-radius: 8px; /* Rounded corners */
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Light shadow */
       margin-top: 20px;
@@ -79,7 +79,7 @@ ui <- fluidPage(
     .total { background-color: #002e54; color: white; } /* Darker background for total */
   ")),
   titlePanel("", windowTitle = "Olympic Medal Data"),
-  tags$h1(class = "title", "Explore Olympic Medal Data for the 2024 Paris Olympics"),
+  tags$h1(class = "title", "Olympic Medal Table - 2024 Paris Olympics"),
 
   sidebarLayout(
     sidebarPanel(
@@ -139,8 +139,7 @@ server <- function(input, output, session) {
           div(class = "medal-info",
               div(class = "medal-box gold", span("🥇 ", selected_country$Gold, style = "font-size: 28px;")),
               div(class = "medal-box silver", span("🥈 ", selected_country$Silver, style = "font-size: 28px;")),
-              div(class = "medal-box bronze", span("🥉 ", selected_country$Bronze, style = "font-size: 28px;")),
-              div(class = "medal-box total", paste("Total: ", selected_country$Total, style = "font-size: 28px;"))  # Removed emoji from total
+              div(class = "medal-box bronze", span("🥉 ", selected_country$Bronze, style = "font-size: 28px;"))
           ),
           p("Click another country on the map to view detailed medal information.")
         )
@@ -165,5 +164,4 @@ server <- function(input, output, session) {
 
 # Run the application
 shinyApp(ui = ui, server = server)
-
 

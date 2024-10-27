@@ -1,11 +1,15 @@
 Package: OlympicsMedal
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Olympic Medal Analysis Toolkit
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
+Author: Achmad Adhni Mulachela
+Maintainer: Achmad Adhni Mulachela <amul0019@student.monash.edu>
+Description: A comprehensive toolkit for analyzing Olympic medal data
+    from the 2024 Olympics, allowing users to explore medal distribution,
+    country performance, and trends across various Olympic events. The
+    package includes visualizations and data summaries to facilitate insights
+    into global Olympic achievements.
+URL: https://etc5523-2024.github.io/assignment-4-packages-and-shiny-apps-adhni/OlympicsMedal/
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true

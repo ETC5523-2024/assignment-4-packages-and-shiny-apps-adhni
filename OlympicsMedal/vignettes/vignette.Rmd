@@ -1,0 +1,19 @@
+---
+title: "Getting Started with OlympicsMedal"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{My Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+---
+
+# Introduction
+
+MyPackage is designed to help you analyze Olympic medal data. This vignette will guide you through the main functionalities of the package.
+
+# Installation
+
+```{r}
+library(remotes)
+library(OlympicsMedal)
+```
+
